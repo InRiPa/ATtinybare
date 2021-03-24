@@ -1,6 +1,6 @@
 # folder structure
-./bin/
-!./bin/.gitkeep
+/bin/*
+!/bin/.gitkeep
 
 # Prerequisites
 *.d
