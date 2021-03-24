@@ -23,3 +23,19 @@
 
 
 * REGISTER SUMMAARY TABLE AT **p. 212**
+* **FUSE bits** p. 160
+* Device Clocking option. p.23
+  * 0000 External Clock  
+  * 0010 Calibrated Internal RC Oscillator 4MHz 
+  * 0100 Calibrated internal RC Oscillator 8MHz 
+  * 0110 Watchdog Oscillator 128kHz 
+  * 1000 - 1111 External Crystal/Ceramic Resonator 
+
+
+# Toolchain Setup
+
+## Directly on Host
+
+## Using Docker
+
+https://blog.podkalicki.com/avr-dockerized-toolchain/
