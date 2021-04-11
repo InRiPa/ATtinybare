@@ -1,5 +1,40 @@
 # ATTINY2313
 
+
+# Microcontroller Configuration
+
+## Instruction Set Microcontroller
+  * avr-gcc -> "avr25" -> "attiny2313"
+
+
+## Setting Fuse Bits (p. 160)
+Defaults:
+  * Low Fuse :      0110 0100 = 0x64
+  * High Fuse:      1101 1111 = 0xDF
+  * Extended Fuse:  1111 1111 = 0xFF
+
+## Device Clocking Options (p.23)
+The device is shipped with **CKSEL = “0100”**, **SUT = “10”**, and **CKDIV8** programmed.
+
+CKSEL Options:
+  * 0000 External Clock  
+  * 0010 Calibrated Internal RC Oscillator 4MHz 
+  * 0100 Calibrated internal RC Oscillator 8MHz 
+  * 0110 Watchdog Oscillator 128kHz 
+  * 1000 - 1111 External Crystal/Ceramic Resonator 
+
+
+# Toolchain Setup
+
+## Directly on Host
+
+## Using Docker
+
+https://blog.podkalicki.com/avr-dockerized-toolchain/
+
+
+# MISC
+
 * Access I/O Memory (64 Addresses), or as the Data Space locations  **0x20 - 0x5F**
 * General Purpose working registers (Fig4/ P.10) Register **0x00 - 0x1F**
   * Register(R)0 - 0x00
@@ -23,19 +58,3 @@
 
 
 * REGISTER SUMMAARY TABLE AT **p. 212**
-* **FUSE bits** p. 160
-* Device Clocking option. p.23
-  * 0000 External Clock  
-  * 0010 Calibrated Internal RC Oscillator 4MHz 
-  * 0100 Calibrated internal RC Oscillator 8MHz 
-  * 0110 Watchdog Oscillator 128kHz 
-  * 1000 - 1111 External Crystal/Ceramic Resonator 
-
-
-# Toolchain Setup
-
-## Directly on Host
-
-## Using Docker
-
-https://blog.podkalicki.com/avr-dockerized-toolchain/
