@@ -30,23 +30,27 @@ BUILDDIR = ./bin
 OBJDIR = ./obj
 
 # Sourcecode
-SRC += src/main.c
+SRCDIR = src/
+SRC += main.c
 OBJFILES = main.o # used to not rebuild entire project
 
 
 # RULESETS
 
-default: build
+default: all
 
-all: build
+all: $(TARGET)
+
+$(TARGET):
+	$(CC) $(CFLAGS) -mmcu=$(INSTR_SET) -o $(BUILDDIR)/$(TARGET).bin $(SRCDIR)/$(SRC) $(LDFLAGS) 
+	avr-objcopy -j .text -j .data -O ihex $(BUILDDIR)/$(TARGET).bin  $(BUILDDIR)/$(TARGET).hex
 
 build:
-	$(CC) $(CFLAGS) -mmcu=$(INSTR_SET) -o $(BUILDDIR)/$(TARGET).bin $(SRC) $(LDFLAGS) 
-	avr-objcopy -j .text -j .data -O ihex $(BUILDDIR)/$(TARGET).bin  $(BUILDDIR)/$(TARGET).hex
+	$(CC) $(CFLAGS) -c -mmcu=$(INSTR_SET) -o $(OBJDIR)/$(SRC).o $(SRCDIR)/$(SRC) $(LDFLAGS) 
+
 clean:
 	$(RM) $(OBJDIR)/*
 	$(RM) $(BUILDDIR)/*
-
 check:
 	$(FLASH_TOOL) -v  -c $(PROGRAMMER_TYPE) -p $(MU_CONTROLLER) -b $(UPLOAD_BAUDRATE) -P $(PROGRAMMER_TTY) 
     # read high and low fuse bit: avrdude  -U lfuse:r:-:i -U hfuse:r:-:i
