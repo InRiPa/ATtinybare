@@ -41,4 +41,4 @@ check:
 	$(FLASH_TOOL) -v  -c $(PROGRAMMER_TYPE) -p $(MU_CONTROLLER) -b $(UPLOAD_BAUDRATE) -P $(PROGRAMMER_TTY) 
     # read high and low fuse bit: avrdude  -U lfuse:r:-:i -U hfuse:r:-:i
 flash: 
-	 $(FLASH_TOOL) -v -c $(PROGRAMMER_TYPE) -p $(MU_CONTROLLER) -b $(UPLOAD_BAUDRATE) -U flash:w: $(BUILDDIR)/${TARGET}.hex:i -P $(PROGRAMMER_TTY)
+	 $(FLASH_TOOL) -v -c $(PROGRAMMER_TYPE) -p $(MU_CONTROLLER) -b $(UPLOAD_BAUDRATE) -U flash:w:$(BUILDDIR)/${TARGET}.hex:i -P $(PROGRAMMER_TTY)
