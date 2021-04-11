@@ -1,5 +1,7 @@
-# include "types.h"
+#ifndef __perif_H__
+#define __perif_H__
 
+# include "types.h"
 #define DDRD    *((volatile u8*) 0x31) 
 // 0x12 (0x32) | PORTD |   --- PORTD6 PORTD5 PORTD4 PORTD3 PORTD2 PORTD1 PORTD0
 #define PORTD   *((volatile u8*) 0x32)
@@ -33,3 +35,5 @@ int main(void) {
     DDRB->bits.b3 = 1;
 }
 */
+
+#endif
